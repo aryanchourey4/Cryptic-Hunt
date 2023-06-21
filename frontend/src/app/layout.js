@@ -1,3 +1,4 @@
+import Providers from "@/components/provider";
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import localFont from "next/font/local";
@@ -39,11 +40,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark ">
       <body
-        className={`bg-background no-scrollbar
+        className={`bg-background overflow-clip
         ${montserrat.variable} ${firaCode.variable} ${upheavel.variable} ${autom.variable} ${minecraftia.variable}
       `}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

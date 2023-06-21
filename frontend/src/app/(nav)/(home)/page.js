@@ -1,13 +1,24 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
+import Message_box from "@/components/message_box";
+import { PlayButton } from "@/components/play-btn";
 import Side_button from "@/components/side_button";
+import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
+    const [show, setShow] = useState(" invisible right-[-100%]");
+    // const showRef = useRef(" invisible right-[-100%]");
+    // showRef.current = " invisible right-[-100%]";
+    // const showMessage=()=>{show === " visible right-0" ? setShow(" invisible right-[-100%]") : setShow(" visible right-0")}
+    // const showMessage=()=>{show === " visible right-0" ? setShow(" invisible right-[-100%]") : ()=>{setShow(" visible right-0"), setTimeout(hideMessage, 3000)}}
+    const showMessage=()=>{setShow(" visible right-0");  setTimeout(hideMessage, 5000)}
+    const hideMessage=()=>{setShow(" invisible right-[-100%]")}
     return (
         <>
-            {/* body */}
+            <Message_box show={show} />
 
-            <div className="sticky top-0 bg-[#OBOBOB] h-fit py-[30vh] sm:pt-44 md:pt-44 lg:pt-44 xl:pt-44 transition-all duration-300">
+            {/* body */}
+            <div className="fixed w-full top-0 bg-[#OBOBOB] h-fit py-[30vh] sm:pt-44 md:pt-44 lg:pt-44 xl:pt-44 transition-all duration-300">
                 <div className="flex flex-col items-center">
                     {/* main heading */}
                     <div>
@@ -33,28 +44,14 @@ export default function Home() {
                     {/* under heading ends */}
 
                     {/* play button */}
-                    <div className="bg-[#00C29A]">
-                        {/* <a
-              href="#"
-              className=" hover:bg-background hover:text-main hover:border-main"
-            >
-              <div className="py-2 px-12 ">
-                <h2 className="text-[#OBOBOB] font-bold font-heading text-xl sm:text-xl md:text-xl lg:text-xl xl:text-xl transition-all duration-300 ">
-                  PLAY
-                </h2>
-              </div>
-            </a> */}
-                        <button
-                            type="submit"
-                            className="font-bold font-heading text-xl block text-center outline-none bg-main text-white cursor-pointer transition  duration-300
-                sm:py-2 py-1 sm:px-12 px-10 border-2 border-main hover:bg-background hover:text-main
-                 onClick={login}"
-                        >
-                            Play
-                        </button>
+                    <div className="">
+                        <PlayButton />
                     </div>
                     {/* play button ends */}
                 </div>
+                <button className="border border-white" onClick={showMessage}>
+                    Top Right Corner Message Button
+                </button>
             </div>
             {/* body ends */}
 
